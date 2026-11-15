@@ -84,10 +84,10 @@ export function Hero() {
         <div className="order-1 flex justify-center md:order-2">
           <div className="relative">
             <div
-              className="absolute -inset-3 rounded-[2rem] bg-gradient-to-tr from-primary/40 via-transparent to-gold/40 blur-md"
+              className="absolute -inset-3 rounded-[1.6rem] bg-gradient-to-tr from-primary/40 via-transparent to-gold/40 blur-md"
               style={{ animation: "spin-slow 14s linear infinite" }}
             />
-            <div className="relative overflow-hidden rounded-[1.8rem] border border-primary/30 [box-shadow:var(--shadow-glow)]">
+            <div className="relative overflow-hidden rounded-[0.8rem] border border-primary/30 [box-shadow:var(--shadow-glow)]">
               {/* TODO: replace src/assets/profile.jpg with your own picture */}
               <img
                 src={profileImg}
