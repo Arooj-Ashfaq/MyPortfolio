@@ -24,7 +24,7 @@ export const SOCIALS: Social[] = [
   { label: "Dribbble", href: "https://dribbble.com/Play_with_designs", icon: Dribbble },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/_aroojashfaq_?igsh=cWF6YWRramRzY2lo",
+    href: "https://www.instagram.com/dump.error.exe",
     icon: Instagram,
   },
 ];
@@ -42,12 +42,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     icon: Linkedin,
   },
   { label: "Dribbble", text: "dribbble.com/Play_with_designs", href: "https://dribbble.com/Play_with_designs", icon: Dribbble },
-  {
-    label: "Instagram",
-    text: "instagram.com/_aroojashfaq_",
-    href: "https://www.instagram.com/_aroojashfaq_?igsh=cWF6YWRramRzY2lo",
-    icon: Instagram,
-  },
 ];
 
 export const CONTACT_METHODS = [
