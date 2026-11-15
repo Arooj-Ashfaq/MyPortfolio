@@ -18,3 +18,7 @@ dist-ssr
 *.sln
 *.sw?
 *.log
+# build output
+dist
+.output
+.wrangler/
