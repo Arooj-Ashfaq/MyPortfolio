@@ -45,16 +45,16 @@ export function About() {
           subtitle="Certified Full Stack Developer with a design eye and a growing security focus."
         />
 
-        <div className="grid items-start gap-12 lg:grid-cols-[1.3fr_1fr]">
+        <div className="grid items-stretch gap-12 lg:grid-cols-[1.3fr_1fr]">
           <Reveal variant="left">
-            <p className="text-lg leading-relaxed text-muted-foreground">
+            <p className="text-justify text-lg leading-relaxed text-muted-foreground [hyphens:auto]" lang="en">
               I&apos;m <span className="font-semibold text-foreground">Arooj Ashfaq</span>, a
               <span className="text-primary"> Certified Full Stack Web Developer</span> who designs and
               builds complete web applications — from the interface and API to the database and
               deployment. I work with React and TypeScript on the front end, and Node.js, NestJS and
               Python on the back end, backed by PostgreSQL and MongoDB.
             </p>
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 text-justify text-lg leading-relaxed text-muted-foreground [hyphens:auto]" lang="en">
               A graphic design background shapes how I approach every interface: clear structure,
               consistent systems and attention to detail. Alongside development, I&apos;m building
               hands-on <span className="text-primary">cybersecurity</span> skills — network security, web
@@ -76,25 +76,9 @@ export function About() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#portfolio"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:[box-shadow:var(--shadow-glow)]"
-              >
-                View my work
-                <ArrowRight size={16} />
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-primary/60 hover:text-primary"
-              >
-                Get in touch
-              </a>
-            </div>
           </Reveal>
 
-          <Reveal variant="right" className="space-y-4">
+          <Reveal variant="right" className="flex flex-col gap-4">
             <div className="grid grid-cols-2 gap-4">
               {stats.map((s, i) => (
                 <div
@@ -108,7 +92,7 @@ export function About() {
               ))}
             </div>
 
-            <div className="rounded-2xl border border-primary/30 bg-card/60 p-6">
+            <div className="flex-1 rounded-2xl border border-primary/30 bg-card/60 p-6">
               <p className="mb-4 flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 <Rocket size={14} />
                 Currently
@@ -124,6 +108,22 @@ export function About() {
             </div>
           </Reveal>
         </div>
+
+        <Reveal className="mt-10 flex flex-wrap gap-3">
+          <a
+            href="#portfolio"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:[box-shadow:var(--shadow-glow)]"
+          >
+            View my work
+            <ArrowRight size={16} />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-primary/60 hover:text-primary"
+          >
+            Get in touch
+          </a>
+        </Reveal>
       </div>
     </section>
   );
