@@ -74,7 +74,7 @@
   --accent-foreground: oklch(0.98 0 0);
 
   /* Golden #f5a623 */
-  --gold: oklch(0.78 0.15 75);
+  --gold: oklch(0.7 0.14 255); /* secondary accent: deep blue (name kept for existing classes) */
   --gold-foreground: oklch(0.16 0.006 240);
 
   --destructive: oklch(0.62 0.23 25);
@@ -101,7 +101,7 @@
   --muted-foreground: oklch(0.45 0.01 240);
   --accent: oklch(0.94 0.005 240);
   --accent-foreground: oklch(0.18 0.01 240);
-  --gold: oklch(0.7 0.15 70);
+  --gold: oklch(0.55 0.15 255); /* secondary accent: deep blue */
   --gold-foreground: oklch(0.18 0.01 240);
   --border: oklch(0.18 0.01 240 / 12%);
   --input: oklch(0.18 0.01 240 / 16%);

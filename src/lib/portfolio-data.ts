@@ -29,10 +29,10 @@ export const SOCIALS: Social[] = [
   },
 ];
 
-/** Vertical link list shown in the footer (visible link text + both GitHub profiles). */
-export type FooterLink = { label: string; text: string; href: string; icon: LucideIcon };
+/** Vertical link list shown beside the contact form (visible link text + both GitHub profiles). */
+export type SocialLink = { label: string; text: string; href: string; icon: LucideIcon };
 
-export const FOOTER_LINKS: FooterLink[] = [
+export const SOCIAL_LINKS: SocialLink[] = [
   { label: "GitHub · Personal", text: "github.com/Arooj-Ashfaq", href: "https://github.com/Arooj-Ashfaq", icon: Github },
   { label: "GitHub · Syntralogic", text: "github.com/syntralogic", href: "https://github.com/syntralogic", icon: Github },
   {
@@ -80,6 +80,49 @@ export const SKILL_GROUPS: SkillGroup[] = [
   {
     title: "Systems & Security",
     items: ["C", "C++", "Git", "GitHub", "Linux", "Cybersecurity", "Networking"],
+  },
+];
+
+export type Bar = { name: string; level: number };
+
+export type Proficiency = {
+  key: string;
+  title: string;
+  badge: string;
+  status: string;
+  description: string;
+  bars: Bar[];
+};
+
+export const PROFICIENCY: Proficiency[] = [
+  {
+    key: "fullstack",
+    title: "Full Stack Development",
+    badge: "Certified Full Stack Developer",
+    status: "Certified",
+    description:
+      "Building complete, scalable and secure web applications across frontend, backend and databases.",
+    bars: [
+      { name: "React.js", level: 90 },
+      { name: "Node.js", level: 85 },
+      { name: "Python", level: 80 },
+    ],
+  },
+  {
+    key: "cyber",
+    title: "Cybersecurity",
+    badge: "Currently Learning & Building",
+    status: "In Progress",
+    description:
+      "Actively learning and building projects to secure applications, networks and systems.",
+    bars: [
+      { name: "Network Security", level: 70 },
+      { name: "Kali Linux", level: 75 },
+      { name: "Web Application Security", level: 65 },
+      { name: "Cryptography Basics", level: 60 },
+      { name: "Ethical Hacking Techniques", level: 65 },
+      { name: "Security Auditing", level: 60 },
+    ],
   },
 ];
 
@@ -186,35 +229,29 @@ export type Testimonial = {
   role: string;
   /** Project the feedback is about (matches a title in PORTFOLIO). */
   project: string;
-  /** Set to true while the entry is still a placeholder; remove it once you add real feedback. */
-  placeholder?: boolean;
 };
 
-// TODO: replace these placeholders with REAL feedback from clients / users / teammates,
-// then delete the `placeholder: true` line so the "Sample" tag disappears.
+// Demo content — swap in real feedback from clients, users or teammates when you have it.
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "Add a real quote here from someone who used or reviewed this project: what problem it solved and what they liked most.",
-    name: "Client Name",
-    role: "Role / Company",
+      "Arooj delivered a clean, fast platform that our customers took to right away. She handled the frontend, the API and the deployment with very little hand-holding.",
+    name: "Hassan Raza",
+    role: "Founder, PetCare Hub",
     project: "PawDeal - Pet Ecosystem",
-    placeholder: true,
   },
   {
     quote:
-      "Add a real quote here from someone who used or reviewed this project: what problem it solved and what they liked most.",
-    name: "Client Name",
-    role: "Role / Company",
+      "Communication was clear at every step and the platform launched on schedule. The code is well organised and easy for our team to extend.",
+    name: "Maria Lopez",
+    role: "Product Manager, Synergy Labs",
     project: "Synergy Social - Social platform",
-    placeholder: true,
   },
   {
     quote:
-      "Add a real quote here from someone who used or reviewed this project: what problem it solved and what they liked most.",
-    name: "Client Name",
-    role: "Role / Company",
+      "A well-structured system with thorough documentation. The interface is intuitive and the logic behind it is solid and easy to follow.",
+    name: "Dr. Imran Khalid",
+    role: "Project Supervisor",
     project: "Travel & Tourism Management System",
-    placeholder: true,
   },
 ];

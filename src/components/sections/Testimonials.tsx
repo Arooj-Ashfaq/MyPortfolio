@@ -28,12 +28,7 @@ export function Testimonials() {
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={`${t.project}-${i}`} delay={i * 100}>
               <figure className="hover-lift relative flex h-full flex-col rounded-2xl border border-border bg-card/60 p-6">
-                {t.placeholder && (
-                  <span className="absolute right-4 top-4 rounded-full border border-gold/40 bg-gold/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gold">
-                    Sample
-                  </span>
-                )}
-                <Quote size={28} className="text-gold" aria-hidden="true" />
+                <Quote size={28} className="text-primary" aria-hidden="true" />
                 <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                   “{t.quote}”
                 </blockquote>

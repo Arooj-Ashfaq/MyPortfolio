@@ -3,7 +3,7 @@ import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import emailjs from '@emailjs/browser';
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import { SocialIcons } from "@/components/SocialIcons";
+import { SocialLinkList } from "@/components/SocialLinkList";
 import { CONTACT_METHODS, PROFILE } from "@/lib/portfolio-data";
 import { cn } from "@/lib/utils";
 
@@ -150,8 +150,8 @@ export function Contact() {
             ))}
 
             <div className="rounded-2xl border border-border bg-card/60 p-5">
-              <p className="mb-4 text-sm font-medium text-muted-foreground">Find me online</p>
-              <SocialIcons />
+              <p className="mb-3 text-sm font-medium text-muted-foreground">Find me online</p>
+              <SocialLinkList />
             </div>
 
             {/* Message counter */}

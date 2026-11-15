@@ -13,7 +13,7 @@ const pillars = [
     icon: Palette,
     title: "Design Sensibility",
     text: "Clear hierarchy and consistent interfaces, shaped by a graphic design background.",
-    tone: "text-gold border-gold/40",
+    tone: "text-primary border-primary/40",
   },
   {
     icon: ShieldCheck,
@@ -57,7 +57,7 @@ export function About() {
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               A graphic design background shapes how I approach every interface: clear structure,
               consistent systems and attention to detail. Alongside development, I&apos;m building
-              hands-on <span className="text-gold">cybersecurity</span> skills — network security, web
+              hands-on <span className="text-primary">cybersecurity</span> skills — network security, web
               application auditing and cryptography fundamentals — so the products I ship are secure
               by design.
             </p>
@@ -108,15 +108,15 @@ export function About() {
               ))}
             </div>
 
-            <div className="rounded-2xl border border-gold/30 bg-card/60 p-6">
-              <p className="mb-4 flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <div className="rounded-2xl border border-primary/30 bg-card/60 p-6">
+              <p className="mb-4 flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 <Rocket size={14} />
                 Currently
               </p>
               <ul className="space-y-3">
                 {currently.map((c) => (
                   <li key={c} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden="true" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
                     {c}
                   </li>
                 ))}
