@@ -75,15 +75,6 @@ export function Contact() {
       setStatus("success");
       setStatusMessage("✓ Message sent successfully! I'll get back to you soon.");
       
-      const sentMessages = JSON.parse(localStorage.getItem("sentMessages") || "[]");
-      sentMessages.push({
-        ...form,
-        timestamp: new Date().toISOString(),
-        status: "delivered",
-        emailId: response.text,
-      });
-      localStorage.setItem("sentMessages", JSON.stringify(sentMessages));
-
       setForm({ name: "", email: "", message: "" });
       setTimeout(() => resetStatus(), 5000);
       
@@ -153,18 +144,6 @@ export function Contact() {
               <p className="mb-3 text-sm font-medium text-muted-foreground">Find me online</p>
               <SocialLinkList />
             </div>
-
-            {/* Message counter */}
-            {typeof window !== "undefined" && (
-              <div className="rounded-2xl border border-border/40 bg-card/30 p-4 text-center">
-                <p className="text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">
-                    {JSON.parse(localStorage.getItem("sentMessages") || "[]").length}
-                  </span>{" "}
-                  messages sent via this form
-                </p>
-              </div>
-            )}
           </Reveal>
 
           {/* Form */}
