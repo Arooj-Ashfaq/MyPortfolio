@@ -6,20 +6,17 @@ const pillars = [
   {
     icon: Code2,
     title: "Full-Stack Engineering",
-    text: "React, TypeScript, Node.js and PostgreSQL — built and shipped end to end.",
-    tone: "text-primary border-primary/40",
+    text: "React, TypeScript, Node.js and PostgreSQL — applications built and shipped end to end, from interface to deployment.",
   },
   {
     icon: Palette,
     title: "Design Sensibility",
-    text: "Clear hierarchy and consistent interfaces, shaped by a graphic design background.",
-    tone: "text-primary border-primary/40",
+    text: "Clear hierarchy and consistent interfaces, shaped by a graphic design background and attention to detail.",
   },
   {
     icon: ShieldCheck,
     title: "Security Mindset",
-    text: "Hands-on practice with Kali Linux, network security and web application audits.",
-    tone: "text-primary border-primary/40",
+    text: "Hands-on practice with Kali Linux, network security and web application audits to build secure by design.",
   },
 ];
 
@@ -45,85 +42,103 @@ export function About() {
           subtitle="Certified Full Stack Developer with a design eye and a growing security focus."
         />
 
-        <div className="grid items-stretch gap-12 lg:grid-cols-[1.3fr_1fr]">
-          <Reveal variant="left">
-            <p className="text-justify text-lg leading-relaxed text-muted-foreground [hyphens:auto]" lang="en">
+        <div className="grid items-stretch gap-10 lg:grid-cols-[1.35fr_1fr]">
+          {/* Story */}
+          <Reveal variant="left" className="flex flex-col">
+            <p
+              className="text-justify text-base leading-8 text-muted-foreground sm:text-[17px] [hyphens:auto]"
+              lang="en"
+            >
               I&apos;m <span className="font-semibold text-foreground">Arooj Ashfaq</span>, a
-              <span className="text-primary"> Certified Full Stack Web Developer</span> who designs and
-              builds complete web applications — from the interface and API to the database and
-              deployment. I work with React and TypeScript on the front end, and Node.js, NestJS and
-              Python on the back end, backed by PostgreSQL and MongoDB.
+              <span className="font-medium text-primary"> Certified Full Stack Web Developer</span> who
+              designs and builds complete web applications — from the interface and API to the
+              database and deployment. I work with React and TypeScript on the front end, and
+              Node.js, NestJS and Python on the back end, backed by PostgreSQL and MongoDB.
             </p>
-            <p className="mt-5 text-justify text-lg leading-relaxed text-muted-foreground [hyphens:auto]" lang="en">
+            <p
+              className="mt-5 text-justify text-base leading-8 text-muted-foreground sm:text-[17px] [hyphens:auto]"
+              lang="en"
+            >
               A graphic design background shapes how I approach every interface: clear structure,
               consistent systems and attention to detail. Alongside development, I&apos;m building
-              hands-on <span className="text-primary">cybersecurity</span> skills — network security, web
-              application auditing and cryptography fundamentals — so the products I ship are secure
-              by design.
+              hands-on <span className="font-medium text-primary">cybersecurity</span> skills —
+              network security, web application auditing and cryptography fundamentals — so the
+              products I ship are secure by design.
             </p>
 
-            <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-              {pillars.map((p) => (
-                <li
-                  key={p.title}
-                  className="hover-lift rounded-2xl border border-border bg-card/60 p-5"
-                >
-                  <span className={`mb-3 grid h-10 w-10 place-items-center rounded-xl border ${p.tone}`}>
-                    <p.icon size={20} />
-                  </span>
-                  <h3 className="font-display text-sm font-bold">{p.title}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{p.text}</p>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-auto flex flex-wrap gap-3 pt-8">
+              <a
+                href="#portfolio"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:[box-shadow:var(--shadow-glow)]"
+              >
+                View my work
+                <ArrowRight size={16} />
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/60 hover:text-primary"
+              >
+                Get in touch
+              </a>
+            </div>
           </Reveal>
 
-          <Reveal variant="right" className="flex flex-col gap-4">
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((s, i) => (
-                <div
-                  key={s.label}
-                  className="hover-lift rounded-2xl border border-border bg-card/60 p-6 text-center"
-                  style={{ transitionDelay: `${i * 60}ms` }}
-                >
-                  <p className="font-display text-3xl font-extrabold text-gradient">{s.value}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex-1 rounded-2xl border border-primary/30 bg-card/60 p-6">
-              <p className="mb-4 flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                <Rocket size={14} />
-                Currently
-              </p>
-              <ul className="space-y-3">
-                {currently.map((c) => (
-                  <li key={c} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                    {c}
-                  </li>
+          {/* At a glance */}
+          <Reveal variant="right" className="flex">
+            <div className="flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card/60">
+              <dl className="grid grid-cols-2">
+                {stats.map((s, i) => (
+                  <div
+                    key={s.label}
+                    className={[
+                      "px-6 py-6 text-center",
+                      i < 2 ? "border-b border-border" : "",
+                      i % 2 === 0 ? "border-r border-border" : "",
+                    ].join(" ")}
+                  >
+                    <dd className="font-display text-3xl font-extrabold text-gradient">{s.value}</dd>
+                    <dt className="mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      {s.label}
+                    </dt>
+                  </div>
                 ))}
-              </ul>
+              </dl>
+
+              <div className="flex-1 border-t border-border p-6">
+                <p className="mb-4 flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                  <Rocket size={14} />
+                  Currently
+                </p>
+                <ul className="space-y-3">
+                  {currently.map((c) => (
+                    <li key={c} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                      <span
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
+                        aria-hidden="true"
+                      />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </Reveal>
         </div>
 
-        <Reveal className="mt-10 flex flex-wrap gap-3">
-          <a
-            href="#portfolio"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:[box-shadow:var(--shadow-glow)]"
-          >
-            View my work
-            <ArrowRight size={16} />
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-primary/60 hover:text-primary"
-          >
-            Get in touch
-          </a>
-        </Reveal>
+        {/* Pillars */}
+        <ul className="mt-12 grid gap-6 md:grid-cols-3">
+          {pillars.map((p, i) => (
+            <Reveal as="li" key={p.title} delay={i * 100} className="h-full">
+              <div className="hover-lift h-full rounded-2xl border border-border bg-card/60 p-6">
+                <span className="grid h-11 w-11 place-items-center rounded-xl border border-primary/40 bg-primary/5 text-primary">
+                  <p.icon size={20} />
+                </span>
+                <h3 className="mt-4 font-display text-base font-bold">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
       </div>
     </section>
   );
