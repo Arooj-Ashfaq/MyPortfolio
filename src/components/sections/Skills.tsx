@@ -1,154 +1,102 @@
-import { Code2, Palette, ShieldCheck, BadgeCheck, ExternalLink, type LucideIcon } from "lucide-react";
-import { SECTION_NOTE } from "@/components/sections/skills-note";
-import { SectionHeading } from "@/components/SectionHeading";
+import { Globe, Network, ShieldCheck, type LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
+import {
+  SiBootstrap,
+  SiC,
+  SiCplusplus,
+  SiCss,
+  SiExpress,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiLinux,
+  SiMongodb,
+  SiMysql,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
+} from "react-icons/si";
 import { Reveal } from "@/components/Reveal";
-import { useReveal } from "@/hooks/use-reveal";
-import { SKILL_CARDS, type SkillCard, type Bar } from "@/lib/portfolio-data";
-import { cn } from "@/lib/utils";
+import { SKILL_GROUPS } from "@/lib/portfolio-data";
 
-const ICONS: Record<string, LucideIcon> = {
-  fullstack: Code2,
-  design: Palette,
-  cyber: ShieldCheck,
+type Glyph = { icon: IconType | LucideIcon; color?: string };
+
+/** Brand colours; entries without a colour inherit the current text colour. */
+const GLYPHS: Record<string, Glyph> = {
+  HTML5: { icon: SiHtml5, color: "#E34F26" },
+  CSS3: { icon: SiCss, color: "#1572B6" },
+  JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
+  TypeScript: { icon: SiTypescript, color: "#3178C6" },
+  React: { icon: SiReact, color: "#61DAFB" },
+  Tailwind: { icon: SiTailwindcss, color: "#06B6D4" },
+  Bootstrap: { icon: SiBootstrap, color: "#7952B3" },
+  Vite: { icon: SiVite, color: "#8B7CFF" },
+  Python: { icon: SiPython, color: "#3776AB" },
+  "Node.js": { icon: SiNodedotjs, color: "#5FA04E" },
+  Express: { icon: SiExpress },
+  MongoDB: { icon: SiMongodb, color: "#47A248" },
+  PostgreSQL: { icon: SiPostgresql, color: "#4F7FD0" },
+  MySQL: { icon: SiMysql, color: "#4479A1" },
+  "REST APIs": { icon: Globe, color: "#22B8CF" },
+  C: { icon: SiC, color: "#A8B9CC" },
+  "C++": { icon: SiCplusplus, color: "#3B8BD6" },
+  Git: { icon: SiGit, color: "#F05032" },
+  GitHub: { icon: SiGithub },
+  Linux: { icon: SiLinux, color: "#FCC624" },
+  Cybersecurity: { icon: ShieldCheck, color: "#D9A441" },
+  Networking: { icon: Network, color: "#E0569C" },
 };
 
-/** Animated progress bar that fills when scrolled into view. */
-function ProgressBar({ bar, accent, delay }: { bar: Bar; accent: "primary" | "gold"; delay: number }) {
-  const { ref, visible } = useReveal<HTMLDivElement>();
-  return (
-    <div ref={ref}>
-      <div className="mb-1.5 flex items-center justify-between text-sm">
-        <span className="font-medium text-foreground">{bar.name}</span>
-        <span className={accent === "gold" ? "text-gold" : "text-primary"}>{bar.level}%</span>
-      </div>
-      <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
-        <div
-          className={cn(
-            "h-full rounded-full transition-[width] duration-1000 ease-out",
-            accent === "gold" ? "bg-gold" : "bg-primary",
-          )}
-          style={{
-            width: visible ? `${bar.level}%` : "0%",
-            transitionDelay: `${delay}ms`,
-            boxShadow:
-              accent === "gold"
-                ? "0 0 12px color-mix(in oklab, var(--gold) 70%, transparent)"
-                : "0 0 12px color-mix(in oklab, var(--primary) 70%, transparent)",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
-function Card({ card, index }: { card: SkillCard; index: number }) {
-  const Icon = ICONS[card.key];
-  const accent = card.badgeTone;
-  const accentText = accent === "gold" ? "text-gold" : "text-primary";
-  const accentBorder = accent === "gold" ? "hover:border-gold/50" : "hover:border-primary/50";
-
-  return (
-    <Reveal delay={index * 120}>
-      <article
-        className={cn(
-          "hover-lift group flex h-full flex-col rounded-3xl border border-border bg-card/60 p-7",
-          accentBorder,
-        )}
-      >
-        <div className="mb-5 flex items-center justify-between">
-          <span
-            className={cn(
-              "grid h-12 w-12 place-items-center rounded-2xl border",
-              accent === "gold" ? "border-gold/40 text-gold" : "border-primary/40 text-primary",
-            )}
-          >
-            <Icon size={24} />
-          </span>
-          <span
-            className={cn(
-              "rounded-full border px-3 py-1 text-xs font-semibold",
-              card.status === "In Progress"
-                ? "border-gold/40 bg-gold/10 text-gold"
-                : "border-primary/40 bg-primary/10 text-primary",
-            )}
-          >
-            {card.status}
-          </span>
-        </div>
-
-        <h3 className="font-display text-xl font-bold">{card.title}</h3>
-
-        <p className={cn("mt-2 inline-flex items-center gap-1.5 text-sm font-semibold", accentText)}>
-          <BadgeCheck size={16} />
-          {card.badge}
-        </p>
-
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.description}</p>
-
-        {/* Progress bars */}
-        <div className="mt-6 space-y-4">
-          {card.bars.map((bar, i) => (
-            <ProgressBar key={bar.name} bar={bar} accent={accent} delay={i * 120} />
-          ))}
-        </div>
-
-        {/* Skill groups */}
-        {card.groups.length > 0 && (
-          <div className="mt-6 space-y-3">
-            {card.groups.map((g) => (
-              <div key={g.label}>
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  {g.label}
-                </p>
-                <ul className="flex flex-wrap gap-2">
-                  {g.items.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-md border border-border bg-background/50 px-2.5 py-1 text-xs text-foreground transition-colors group-hover:border-border"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {card.link && (
-          <a
-            href={card.link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-1.5 self-start rounded-full border border-gold/40 px-4 py-2 text-sm font-semibold text-gold transition-all hover:[box-shadow:var(--shadow-gold)]"
-          >
-            {card.link.label}
-            <ExternalLink size={14} />
-          </a>
-        )}
-      </article>
-    </Reveal>
-  );
-}
-
 export function Skills() {
-  // Filter to show only Full Stack and Cybersecurity cards (first two)
-  const filteredCards = SKILL_CARDS.filter(
-    (card) => card.key === "fullstack" || card.key === "cyber"
-  );
-
   return (
     <section id="skills" className="relative scroll-mt-20 py-24">
       <div className="pointer-events-none absolute inset-0 -z-10 aurora opacity-20" />
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHeading
-          eyebrow="Skills & Certifications"
-          title="Core Expertise"
-          subtitle="Full Stack Development & Cybersecurity — building secure, scalable web applications."
-        />
-        <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-          {filteredCards.map((card, i) => (
-            <Card key={card.key} card={card} index={i} />
+        <div className="mb-14 grid gap-6 lg:grid-cols-2 lg:items-end">
+          <Reveal>
+            <p className="mb-5 inline-block rounded-full border border-gold/30 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              Skills
+            </p>
+            <h2 className="font-display text-3xl font-extrabold leading-tight sm:text-5xl">
+              Tools I work with <span className="text-gold">every day.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="max-w-md text-base leading-relaxed text-muted-foreground lg:ml-auto">
+              A curated set of technologies I&apos;ve worked with across real projects — from
+              pixel-perfect frontends to Python security tooling.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="grid gap-10 md:grid-cols-3">
+          {SKILL_GROUPS.map((group, gi) => (
+            <Reveal key={group.title} delay={gi * 100}>
+              <h3 className="mb-5 flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                <span aria-hidden="true">—</span>
+                {group.title}
+              </h3>
+              <ul className="flex flex-wrap gap-2.5">
+                {group.items.map((item) => {
+                  const glyph = GLYPHS[item];
+                  const Icon = glyph?.icon;
+                  return (
+                    <li
+                      key={item}
+                      className="inline-flex items-center gap-2 rounded-lg border border-border bg-card/60 px-3.5 py-2 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50"
+                    >
+                      {Icon && <Icon size={16} style={glyph.color ? { color: glyph.color } : undefined} aria-hidden="true" />}
+                      {item}
+                    </li>
+                  );
+                })}
+              </ul>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -29,6 +29,27 @@ export const SOCIALS: Social[] = [
   },
 ];
 
+/** Vertical link list shown in the footer (visible link text + both GitHub profiles). */
+export type FooterLink = { label: string; text: string; href: string; icon: LucideIcon };
+
+export const FOOTER_LINKS: FooterLink[] = [
+  { label: "GitHub · Personal", text: "github.com/Arooj-Ashfaq", href: "https://github.com/Arooj-Ashfaq", icon: Github },
+  { label: "GitHub · Syntralogic", text: "github.com/syntralogic", href: "https://github.com/syntralogic", icon: Github },
+  {
+    label: "LinkedIn",
+    text: "linkedin.com/in/arooj-ashfaq-400538318",
+    href: "https://www.linkedin.com/in/arooj-ashfaq-400538318/",
+    icon: Linkedin,
+  },
+  { label: "Dribbble", text: "dribbble.com/Play_with_designs", href: "https://dribbble.com/Play_with_designs", icon: Dribbble },
+  {
+    label: "Instagram",
+    text: "instagram.com/_aroojashfaq_",
+    href: "https://www.instagram.com/_aroojashfaq_?igsh=cWF6YWRramRzY2lo",
+    icon: Instagram,
+  },
+];
+
 export const CONTACT_METHODS = [
   { label: "Email", value: PROFILE.email, href: `mailto:${PROFILE.email}`, icon: Mail },
   // { label: "Phone / WhatsApp", value: PROFILE.phone, href: `https://wa.me/${PROFILE.phoneHref}`, icon: Phone },
@@ -39,63 +60,26 @@ export const NAV_LINKS = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "portfolio", label: "Portfolio" },
+  { id: "testimonials", label: "Reviews" },
   { id: "contact", label: "Contact" },
 ];
 
 /* ---------------- Skills ---------------- */
 
-export type Bar = { name: string; level: number };
+export type SkillGroup = { title: string; items: string[] };
 
-export type SkillCard = {
-  key: string;
-  title: string;
-  badge: string;
-  badgeTone: "primary" | "gold";
-  status: string;
-  description: string;
-  groups: { label: string; items: string[] }[];
-  bars: Bar[];
-  link?: { label: string; href: string };
-};
-
-export const SKILL_CARDS: SkillCard[] = [
+export const SKILL_GROUPS: SkillGroup[] = [
   {
-    key: "fullstack",
-    title: "Full Stack Development",
-    badge: "Certified Full Stack Developer",
-    badgeTone: "primary",
-    status: "Certified",
-    description:
-      "Certified Full Stack Developer with expertise in both frontend and backend, building complete, scalable and secure web applications.",
-    groups: [
-      { label: "Frontend", items: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap", "Tailwind"] },
-      { label: "Backend", items: ["Node.js", "Express.js", "Python", "PHP"] },
-      { label: "Databases", items: ["MongoDB", "MySQL", "PostgreSQL"] },
-      { label: "Tools", items: ["Git", "GitHub", "REST APIs", "Firebase"] },
-    ],
-    bars: [
-      { name: "React.js", level: 90 },
-      { name: "Node.js", level: 85 },
-      { name: "Python", level: 80 },
-    ],
+    title: "Frontend",
+    items: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Tailwind", "Bootstrap", "Vite"],
   },
   {
-    key: "cyber",
-    title: "Cybersecurity",
-    badge: "Currently Learning & Building",
-    badgeTone: "primary",
-    status: "In Progress",
-    description:
-      "Actively learning and building cybersecurity projects to secure applications, networks and systems.",
-    groups: [],
-    bars: [
-      { name: "Network Security", level: 70 },
-      { name: "Kali Linux", level: 75 },
-      { name: "Web Application Security", level: 65 },
-      { name: "Cryptography Basics", level: 60 },
-      { name: "Ethical Hacking Techniques", level: 65 },
-      { name: "Security Auditing", level: 60 },
-    ],
+    title: "Backend & DB",
+    items: ["Python", "Node.js", "Express", "MongoDB", "PostgreSQL", "MySQL", "REST APIs"],
+  },
+  {
+    title: "Systems & Security",
+    items: ["C", "C++", "Git", "GitHub", "Linux", "Cybersecurity", "Networking"],
   },
 ];
 
@@ -191,5 +175,46 @@ export const PORTFOLIO: PortfolioCategory[] = [
         status: "Coming Soon",
       },
     ],
+  },
+];
+
+/* ---------------- Testimonials ---------------- */
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  /** Project the feedback is about (matches a title in PORTFOLIO). */
+  project: string;
+  /** Set to true while the entry is still a placeholder; remove it once you add real feedback. */
+  placeholder?: boolean;
+};
+
+// TODO: replace these placeholders with REAL feedback from clients / users / teammates,
+// then delete the `placeholder: true` line so the "Sample" tag disappears.
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      "Add a real quote here from someone who used or reviewed this project: what problem it solved and what they liked most.",
+    name: "Client Name",
+    role: "Role / Company",
+    project: "PawDeal - Pet Ecosystem",
+    placeholder: true,
+  },
+  {
+    quote:
+      "Add a real quote here from someone who used or reviewed this project: what problem it solved and what they liked most.",
+    name: "Client Name",
+    role: "Role / Company",
+    project: "Synergy Social - Social platform",
+    placeholder: true,
+  },
+  {
+    quote:
+      "Add a real quote here from someone who used or reviewed this project: what problem it solved and what they liked most.",
+    name: "Client Name",
+    role: "Role / Company",
+    project: "Travel & Tourism Management System",
+    placeholder: true,
   },
 ];
